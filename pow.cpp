@@ -37,8 +37,45 @@ int main() {
 
 
 
-    //optimal approach;
+    /*optimal approach; //gives overflow when converting n to positive number if we
+    multiply with n but if we multiply after storing it into long long int then it solves the problem*/
 
+    double x = 2.0;
+    int n = -2147483648;
+    long long nn = n;
+    double ans = 1;
+
+    //converting n if it is negative;
+    if( nn < 0){
+        nn = -1 * nn;
+    }
+
+
+    //looping the solution;
+    while ( nn > 1){
+        //when n is even;
+        if( nn%2 == 0){
+            x *= x;
+            nn = nn/2;
+            //when n is odd;
+        } else {
+            ans *= x;
+            nn = nn-1;
+        }
+    }
+
+    
+    //final answer when n reduced to 1;
+    if( nn == 1){
+        ans *= x;
+    }
+
+    //final answer if n is negative;
+    if(n < 0){
+        ans = 1.0/ans;
+    }
+    cout << ans << endl;
+  
 
 
     return 0;
